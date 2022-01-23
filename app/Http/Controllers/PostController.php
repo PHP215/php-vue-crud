@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Posts;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -36,6 +36,11 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //
+        $post = new Posts;
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->save();
+        return response()->json(['msg'=>'success']);
     }
 
     /**
