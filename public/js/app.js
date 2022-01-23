@@ -5281,6 +5281,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5291,11 +5294,27 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
   methods: {
-    submit: function submit() {// axios.post('')
+    submit: function submit() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.post).then(function (res) {
+        console.log('responese', res.data);
+      })["catch"](function (err) {
+        console.log('error', err.response);
+      });
+    },
+    get: function get() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post', this.post).then(function (res) {
+        _this.post.title = res.data;
+        console.log('respones', res.data);
+      })["catch"](function (err) {
+        console.log('error', err.response);
+      });
+    },
+    created: function created() {
+      console.log('creted');
+      this.get();
     }
   }
 });
@@ -27979,6 +27998,14 @@ var render = function () {
               _c("input", { attrs: { type: "submit", value: "Submit" } }),
             ]
           ),
+          _vm._v(" "),
+          _c("div", [
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.post.title) +
+                "\n                "
+            ),
+          ]),
         ]),
       ]),
     ]),

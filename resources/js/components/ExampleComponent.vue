@@ -10,6 +10,9 @@
                         <input type="text" class="form-control" v-model="post.body"><br>
                         <input type="submit" value="Submit">
                     </form>
+                    <div>
+                        {{post.title}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,15 +29,27 @@ import axios from 'axios'
                 }
             }
         },
-        
-        mounted() {
-            console.log('Component mounted.')
-        },
         methods : {
             submit(){
-                // axios.post('')
-            }
-        }
+                axios.post('http://localhost:8000/api/post',this.post).then(res =>{
+                    console.log('responese',res.data)
+                }).catch(err =>{
+                    console.log('error',err.response)
+                })
+            },
+            get(){
+                axios.get('http://localhost:8000/api/post',this.post).then(res =>{
+                    this.post.title = res.data
+                    console.log('respones',res.data)
+                }).catch(err =>{
+                    console.log('error',err.response)
+                })
+            },
+        },
+         created() {
+                console.log('creted')
+                this.get();
+        },
         
     }
 </script>
