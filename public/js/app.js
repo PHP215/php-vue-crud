@@ -5295,8 +5295,7 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
   },
   methods: {
-    submit: function submit() {
-      console.log(this.title);
+    submit: function submit() {// axios.post('')
     }
   }
 });
@@ -27934,19 +27933,19 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.title,
-                    expression: "title",
+                    value: _vm.post.title,
+                    expression: "post.title",
                   },
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.title },
+                domProps: { value: _vm.post.title },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.title = $event.target.value
+                    _vm.$set(_vm.post, "title", $event.target.value)
                   },
                 },
               }),
@@ -27959,19 +27958,19 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.body,
-                    expression: "body",
+                    value: _vm.post.body,
+                    expression: "post.body",
                   },
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.body },
+                domProps: { value: _vm.post.body },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.body = $event.target.value
+                    _vm.$set(_vm.post, "body", $event.target.value)
                   },
                 },
               }),

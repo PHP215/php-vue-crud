@@ -5,9 +5,9 @@
                 <div class="card">
                     <form action="" @submit.prevent="submit" class="form-group">
                         <label for="title">Post Title</label>
-                        <input type="text" class="form-control" v-model="title"><br>
+                        <input type="text" class="form-control" v-model="post.title"><br>
                         <label for="title">Post Body</label>
-                        <input type="text" class="form-control" v-model="body"><br>
+                        <input type="text" class="form-control" v-model="post.body"><br>
                         <input type="submit" value="Submit">
                     </form>
                 </div>
@@ -32,7 +32,7 @@ import axios from 'axios'
         },
         methods : {
             submit(){
-                console.log(this.title)
+                // axios.post('')
             }
         }
         
