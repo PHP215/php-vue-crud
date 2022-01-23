@@ -5262,6 +5262,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -5279,17 +5281,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      form: {
-        title: null,
-        body: null
+      post: {
+        title: '',
+        body: ''
       }
     };
   },
   mounted: function mounted() {
     console.log('Component mounted.');
+  },
+  methods: {
+    submit: function submit() {
+      console.log(this.title);
+    }
   }
 });
 
@@ -27906,59 +27914,72 @@ var render = function () {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card" }, [
-          _c("form", { staticClass: "form-group", attrs: { action: "" } }, [
-            _c("label", { attrs: { for: "title" } }, [_vm._v("Post Title")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.title,
-                  expression: "form.title",
-                },
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.form.title },
+          _c(
+            "form",
+            {
+              staticClass: "form-group",
+              attrs: { action: "" },
               on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "title", $event.target.value)
+                submit: function ($event) {
+                  $event.preventDefault()
+                  return _vm.submit.apply(null, arguments)
                 },
               },
-            }),
-            _c("br"),
-            _vm._v(" "),
-            _c("label", { attrs: { for: "title" } }, [_vm._v("Post Body")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.body,
-                  expression: "form.body",
+            },
+            [
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Post Title")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  },
                 },
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.form.body },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "body", $event.target.value)
+              }),
+              _c("br"),
+              _vm._v(" "),
+              _c("label", { attrs: { for: "title" } }, [_vm._v("Post Body")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.body,
+                    expression: "body",
+                  },
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.body },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.body = $event.target.value
+                  },
                 },
-              },
-            }),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "submit", value: "Submit" } }),
-          ]),
+              }),
+              _c("br"),
+              _vm._v(" "),
+              _c("input", { attrs: { type: "submit", value: "Submit" } }),
+            ]
+          ),
         ]),
       ]),
     ]),
@@ -40201,6 +40222,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	
