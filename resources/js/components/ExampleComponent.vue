@@ -1,14 +1,16 @@
 <template>
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+            <div class="col-md-5">
+                <h3 class="text-primary text-center">Laravel Vue Crud System</h3>
+                <div class="card p-2">
                     <form action="" @submit.prevent="submit" class="form-group">
                         <label for="title">Post Title</label>
                         <input type="text" class="form-control post-title" v-model="form.title"><br>
                         <label for="title">Post Body</label>
                         <input type="text" class="form-control post-body" v-model="form.body"><br>
-                        <input type="submit" value="Submit">
+                        <input v-if="check == 0" class="btn btn-primary"  type="submit" value="Submit">
+                        <input v-if="check == 1" class="btn btn-warning"  type="submit" value="Update">
                     </form>
                     <table class="table table-responsive table-striped">
                         <thead>
@@ -48,7 +50,7 @@ import axios from 'axios'
                     body : '',  
                 },
                 posts : null,
-                counter : 0,
+                check : 0,
             }
         },
         methods : {
@@ -83,6 +85,7 @@ import axios from 'axios'
             then(res =>{
                 this.form.title = res.data.title
                 this.form.body = res.data.body
+                this.check = 1
                 console.log('edit',res.data.body)
             }).
             catch(err =>{

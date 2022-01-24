@@ -5303,6 +5303,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5313,7 +5315,7 @@ __webpack_require__.r(__webpack_exports__);
         body: ''
       },
       posts: null,
-      counter: 0
+      check: 0
     };
   },
   methods: {
@@ -5356,6 +5358,7 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post/' + id).then(function (res) {
         _this4.form.title = res.data.title;
         _this4.form.body = res.data.body;
+        _this4.check = 1;
         console.log('edit', res.data.body);
       })["catch"](function (err) {
         console.log('an error occurs', err);
@@ -27977,10 +27980,14 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "container mt-5" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
+      _c("div", { staticClass: "col-md-5" }, [
+        _c("h3", { staticClass: "text-primary text-center" }, [
+          _vm._v("Laravel Vue Crud System"),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "card p-2" }, [
           _c(
             "form",
             {
@@ -28044,7 +28051,19 @@ var render = function () {
               }),
               _c("br"),
               _vm._v(" "),
-              _c("input", { attrs: { type: "submit", value: "Submit" } }),
+              _vm.check == 0
+                ? _c("input", {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "submit", value: "Submit" },
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.check == 1
+                ? _c("input", {
+                    staticClass: "btn btn-warning",
+                    attrs: { type: "submit", value: "Update" },
+                  })
+                : _vm._e(),
             ]
           ),
           _vm._v(" "),
