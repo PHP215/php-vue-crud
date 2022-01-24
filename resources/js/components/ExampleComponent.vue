@@ -24,6 +24,10 @@
                                 <td>{{post.id}}</td>
                                 <td>{{post.title}}</td>
                                 <td>{{post.body}}</td>
+                                <td class="d-flex">
+                                    <button type="submit" class="btn mr-2 btn-primary">Edit</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

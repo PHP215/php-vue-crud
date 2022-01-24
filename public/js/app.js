@@ -5299,6 +5299,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -28031,6 +28035,8 @@ var render = function () {
                   _c("td", [_vm._v(_vm._s(post.title))]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(post.body))]),
+                  _vm._v(" "),
+                  _vm._m(1, true),
                 ])
               }),
               0
@@ -28056,6 +28062,24 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
       ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "d-flex" }, [
+      _c(
+        "button",
+        { staticClass: "btn mr-2 btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Edit")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-danger", attrs: { type: "submit" } },
+        [_vm._v("Delete")]
+      ),
     ])
   },
 ]
