@@ -5312,7 +5312,8 @@ __webpack_require__.r(__webpack_exports__);
         title: '',
         body: ''
       },
-      posts: null
+      posts: null,
+      counter: 0
     };
   },
   methods: {
@@ -5330,7 +5331,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.form).then(function (res) {
-        console.log('responese', res.data);
+        _this2.form.title = '';
+        _this2.form.body = '';
 
         _this2.get();
       })["catch"](function (err) {

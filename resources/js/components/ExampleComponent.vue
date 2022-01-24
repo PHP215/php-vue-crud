@@ -47,7 +47,8 @@ import axios from 'axios'
                     title : '',
                     body : '',  
                 },
-                posts : null
+                posts : null,
+                counter : 0,
             }
         },
         methods : {
@@ -61,7 +62,8 @@ import axios from 'axios'
             },
             submit(){
                 axios.post('http://localhost:8000/api/post',this.form).then(res =>{
-                    console.log('responese',res.data)
+                    this.form.title = ''
+                    this.form.body = ''
                     this.get();
                 }).catch(err =>{
                     console.log('error',err.response)
