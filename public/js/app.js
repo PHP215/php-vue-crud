@@ -5346,6 +5346,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (res) {
         console.log('error', res);
       });
+    },
+    edit: function edit(id) {
+      var _this4 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post/' + id).then(function (res) {
+        _this4.posts.title = res.data.data.title;
+        _this4.posts.body = res.data.data.body;
+        console.log(res);
+      })["catch"](function (err) {
+        console.log('an error occurs', err);
+      });
     }
   },
   created: function created() {

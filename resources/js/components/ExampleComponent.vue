@@ -75,8 +75,18 @@ import axios from 'axios'
                 console.log('error',res)
             })
         },
+        edit(id){
+            axios.get('http://localhost:8000/api/post/'+id).
+            then(res =>{
+                this.posts.title = res.data.data.title
+                this.posts.body = res.data.data.body
+                console.log(res)
+            }).
+            catch(err =>{
+                console.log('an error occurs',err)
+            });
+        }
         },
-        
          created() {
                 console.log('creted')
                 this.get();
