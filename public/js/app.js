@@ -5311,19 +5311,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    submit: function submit() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.posts).then(function (res) {
-        console.log('responese', res.data);
-      })["catch"](function (err) {
-        console.log('error', err.response);
-      });
-    },
     get: function get() {
       var _this = this;
 
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post', this.posts).then(function (res) {
         _this.posts = res.data;
         console.log('respones', res.data);
+      })["catch"](function (err) {
+        console.log('error', err.response);
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.posts).then(function (res) {
+        console.log('responese', res.data);
+
+        _this2.get();
       })["catch"](function (err) {
         console.log('error', err.response);
       });

@@ -46,17 +46,18 @@ import axios from 'axios'
             }
         },
         methods : {
-            submit(){
-                axios.post('http://localhost:8000/api/post',this.posts).then(res =>{
-                    console.log('responese',res.data)
-                }).catch(err =>{
-                    console.log('error',err.response)
-                })
-            },
             get(){
                 axios.get('http://localhost:8000/api/post',this.posts).then(res =>{
                     this.posts = res.data
                     console.log('respones',res.data)
+                }).catch(err =>{
+                    console.log('error',err.response)
+                })
+            },
+            submit(){
+                axios.post('http://localhost:8000/api/post',this.posts).then(res =>{
+                    console.log('responese',res.data)
+                    this.get();
                 }).catch(err =>{
                     console.log('error',err.response)
                 })
