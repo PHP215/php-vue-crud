@@ -9,8 +9,8 @@
                         <input type="text" class="form-control post-title" v-model="form.title"><br>
                         <label for="title">Post Body</label>
                         <input type="text" class="form-control post-body" v-model="form.body"><br>
-                        <input v-if="check == 0" class="btn btn-primary"  type="submit" value="Submit">
-                        <input v-if="check == 1" class="btn btn-warning"  type="submit" value="Update">
+                        <input v-if="check == null" class="btn btn-primary"  type="submit" value="Submit">
+                        <input v-if="check !== null" class="btn btn-warning" @click="update(check)"  type="submit" value="Update">
                     </form>
                     <table class="table table-responsive table-striped">
                         <thead>
@@ -50,7 +50,7 @@ import axios from 'axios'
                     body : '',  
                 },
                 posts : null,
-                check : 0,
+                check : null,
             }
         },
         methods : {
@@ -85,12 +85,23 @@ import axios from 'axios'
             then(res =>{
                 this.form.title = res.data.title
                 this.form.body = res.data.body
-                this.check = 1
-                console.log('edit',res.data.body)
+                this.check = res.data.id
+                console.log(this.check)
             }).
             catch(err =>{
                 console.log('an error occurs',err)
             });
+        },
+        update(id){
+            axios.put('http://localhost:8000/api/post/'+id, this.form).
+            then(response =>{
+                this.get()
+                console.log(response)
+            }).
+            catch(res =>{
+                console.log('error',res)
+            })
+
         }
         },
          created() {

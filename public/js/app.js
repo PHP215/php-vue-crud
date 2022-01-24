@@ -5315,7 +5315,7 @@ __webpack_require__.r(__webpack_exports__);
         body: ''
       },
       posts: null,
-      check: 0
+      check: null
     };
   },
   methods: {
@@ -5358,10 +5358,21 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post/' + id).then(function (res) {
         _this4.form.title = res.data.title;
         _this4.form.body = res.data.body;
-        _this4.check = 1;
-        console.log('edit', res.data.body);
+        _this4.check = res.data.id;
+        console.log(_this4.check);
       })["catch"](function (err) {
         console.log('an error occurs', err);
+      });
+    },
+    update: function update(id) {
+      var _this5 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default().put('http://localhost:8000/api/post/' + id, this.form).then(function (response) {
+        _this5.get();
+
+        console.log(response);
+      })["catch"](function (res) {
+        console.log('error', res);
       });
     }
   },
@@ -28051,17 +28062,22 @@ var render = function () {
               }),
               _c("br"),
               _vm._v(" "),
-              _vm.check == 0
+              _vm.check == null
                 ? _c("input", {
                     staticClass: "btn btn-primary",
                     attrs: { type: "submit", value: "Submit" },
                   })
                 : _vm._e(),
               _vm._v(" "),
-              _vm.check == 1
+              _vm.check !== null
                 ? _c("input", {
                     staticClass: "btn btn-warning",
                     attrs: { type: "submit", value: "Update" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.update(_vm.check)
+                      },
+                    },
                   })
                 : _vm._e(),
             ]
