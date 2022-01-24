@@ -5305,6 +5305,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -5315,7 +5316,9 @@ __webpack_require__.r(__webpack_exports__);
         body: ''
       },
       posts: null,
-      check: null
+      check: null,
+      message: null,
+      success: null
     };
   },
   methods: {
@@ -5348,6 +5351,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log('res', res);
 
         _this3.get();
+
+        _this3.success = 1;
+        _this3.message = res.data.msg;
       })["catch"](function (res) {
         console.log('error', res);
       });
@@ -5370,6 +5376,8 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().put('http://localhost:8000/api/post/' + id, this.form).then(function (response) {
         _this5.get();
 
+        _this5.success = 1;
+        _this5.message = response.data.msg;
         console.log(response);
       })["catch"](function (res) {
         console.log('error', res);
@@ -28082,6 +28090,17 @@ var render = function () {
                 : _vm._e(),
             ]
           ),
+          _vm._v(" "),
+          _vm.success == 1
+            ? _c(
+                "div",
+                {
+                  staticClass: "alert ",
+                  class: { "alert-success": _vm.success == 1 },
+                },
+                [_vm._v(_vm._s(_vm.message))]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c("table", { staticClass: "table table-responsive table-striped" }, [
             _vm._m(0),

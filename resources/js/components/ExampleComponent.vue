@@ -12,6 +12,7 @@
                         <input v-if="check == null" class="btn btn-primary"  type="submit" value="Submit">
                         <input v-if="check !== null" class="btn btn-warning" @click="update(check)"  type="submit" value="Update">
                     </form>
+                    <div v-if="success == 1" class="alert " :class="{'alert-success': success == 1}">{{message}}</div>
                     <table class="table table-responsive table-striped">
                         <thead>
                             <tr>
@@ -51,6 +52,8 @@ import axios from 'axios'
                 },
                 posts : null,
                 check : null,
+                message : null,
+                success : null,
             }
         },
         methods : {
@@ -76,6 +79,8 @@ import axios from 'axios'
             then(res =>{
                 console.log('res',res);
                 this.get();
+                this.success = 1
+                this.message = res.data.msg
             }).catch(res=>{
                 console.log('error',res)
             })
@@ -96,6 +101,8 @@ import axios from 'axios'
             axios.put('http://localhost:8000/api/post/'+id, this.form).
             then(response =>{
                 this.get()
+                this.success = 1
+                this.message = response.data.msg
                 console.log(response)
             }).
             catch(res =>{
