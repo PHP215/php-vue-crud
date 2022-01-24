@@ -27999,13 +27999,9 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c("div", [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.post.title) +
-                "\n                "
-            ),
-          ]),
+          _c("table", {
+            staticClass: "table table-responsiveness table-stripped",
+          }),
         ]),
       ]),
     ]),

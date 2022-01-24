@@ -10,9 +10,19 @@
                         <input type="text" class="form-control" v-model="post.body"><br>
                         <input type="submit" value="Submit">
                     </form>
-                    <div>
-                        {{post.title}}
-                    </div>
+                    <table class="table table-responsive table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Post Title</th>
+                                <th>Post Body</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -39,7 +49,7 @@ import axios from 'axios'
             },
             get(){
                 axios.get('http://localhost:8000/api/post',this.post).then(res =>{
-                    this.post.title = res.data
+                    this.post = res.data
                     console.log('respones',res.data)
                 }).catch(err =>{
                     console.log('error',err.response)
