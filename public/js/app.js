@@ -5335,6 +5335,17 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log('error', err.response);
       });
+    },
+    delete_post: function delete_post(id) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]('http://localhost:8000/api/post/' + id).then(function (res) {
+        console.log('res', res);
+
+        _this3.get();
+      })["catch"](function (res) {
+        console.log('error', res);
+      });
     }
   },
   created: function created() {
@@ -28036,7 +28047,33 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(post.body))]),
                   _vm._v(" "),
-                  _vm._m(1, true),
+                  _c("td", { staticClass: "d-flex" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn mr-2 btn-primary",
+                        on: {
+                          click: function ($event) {
+                            return _vm.edit(post.id)
+                          },
+                        },
+                      },
+                      [_vm._v("Edit")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function ($event) {
+                            return _vm.delete_post(post.id)
+                          },
+                        },
+                      },
+                      [_vm._v("Delete")]
+                    ),
+                  ]),
                 ])
               }),
               0
@@ -28062,24 +28099,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Action")]),
       ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", { staticClass: "d-flex" }, [
-      _c(
-        "button",
-        { staticClass: "btn mr-2 btn-primary", attrs: { type: "submit" } },
-        [_vm._v("Edit")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-danger", attrs: { type: "submit" } },
-        [_vm._v("Delete")]
-      ),
     ])
   },
 ]

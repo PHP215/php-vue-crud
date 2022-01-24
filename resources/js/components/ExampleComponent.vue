@@ -25,8 +25,8 @@
                                 <td>{{post.title}}</td>
                                 <td>{{post.body}}</td>
                                 <td class="d-flex">
-                                    <button type="submit" class="btn mr-2 btn-primary">Edit</button>
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button @click="edit(post.id)" class="btn mr-2 btn-primary">Edit</button>
+                                    <button @click="delete_post(post.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -66,7 +66,17 @@ import axios from 'axios'
                     console.log('error',err.response)
                 })
             },
+            delete_post(id){
+            axios.delete('http://localhost:8000/api/post/'+id).
+            then(res =>{
+                console.log('res',res);
+                this.get();
+            }).catch(res=>{
+                console.log('error',res)
+            })
         },
+        },
+        
          created() {
                 console.log('creted')
                 this.get();
