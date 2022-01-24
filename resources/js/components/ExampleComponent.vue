@@ -5,9 +5,9 @@
                 <div class="card">
                     <form action="" @submit.prevent="submit" class="form-group">
                         <label for="title">Post Title</label>
-                        <input type="text" class="form-control" v-model="post.title"><br>
+                        <input type="text" class="form-control" v-model="posts.title"><br>
                         <label for="title">Post Body</label>
-                        <input type="text" class="form-control" v-model="post.body"><br>
+                        <input type="text" class="form-control" v-model="posts.body"><br>
                         <input type="submit" value="Submit">
                     </form>
                     <table class="table table-responsive table-striped">
@@ -20,10 +20,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr></tr>
+                            <tr v-for="post in posts.data" :key="post.id">
+                                <td>{{post.id}}</td>
+                                <td>{{post.title}}</td>
+                                <td>{{post.body}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
+                 
             </div>
         </div>
     </div>
@@ -33,23 +38,24 @@ import axios from 'axios'
     export default {
         data(){
             return{
-                post : {
+                posts : {
+                  id : '',
                     title : '',
-                    body : '',
+                    body : '',  
                 }
             }
         },
         methods : {
             submit(){
-                axios.post('http://localhost:8000/api/post',this.post).then(res =>{
+                axios.post('http://localhost:8000/api/post',this.posts).then(res =>{
                     console.log('responese',res.data)
                 }).catch(err =>{
                     console.log('error',err.response)
                 })
             },
             get(){
-                axios.get('http://localhost:8000/api/post',this.post).then(res =>{
-                    this.post = res.data
+                axios.get('http://localhost:8000/api/post',this.posts).then(res =>{
+                    this.posts = res.data
                     console.log('respones',res.data)
                 }).catch(err =>{
                     console.log('error',err.response)

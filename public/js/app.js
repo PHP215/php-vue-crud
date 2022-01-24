@@ -5284,11 +5284,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      post: {
+      posts: {
+        id: '',
         title: '',
         body: ''
       }
@@ -5296,7 +5312,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.post).then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:8000/api/post', this.posts).then(function (res) {
         console.log('responese', res.data);
       })["catch"](function (err) {
         console.log('error', err.response);
@@ -5305,8 +5321,8 @@ __webpack_require__.r(__webpack_exports__);
     get: function get() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post', this.post).then(function (res) {
-        _this.post.title = res.data;
+      axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:8000/api/post', this.posts).then(function (res) {
+        _this.posts = res.data;
         console.log('respones', res.data);
       })["catch"](function (err) {
         console.log('error', err.response);
@@ -27952,19 +27968,19 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.post.title,
-                    expression: "post.title",
+                    value: _vm.posts.title,
+                    expression: "posts.title",
                   },
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.post.title },
+                domProps: { value: _vm.posts.title },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.post, "title", $event.target.value)
+                    _vm.$set(_vm.posts, "title", $event.target.value)
                   },
                 },
               }),
@@ -27977,19 +27993,19 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.post.body,
-                    expression: "post.body",
+                    value: _vm.posts.body,
+                    expression: "posts.body",
                   },
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.post.body },
+                domProps: { value: _vm.posts.body },
                 on: {
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.post, "body", $event.target.value)
+                    _vm.$set(_vm.posts, "body", $event.target.value)
                   },
                 },
               }),
@@ -27999,15 +28015,46 @@ var render = function () {
             ]
           ),
           _vm._v(" "),
-          _c("table", {
-            staticClass: "table table-responsiveness table-stripped",
-          }),
+          _c("table", { staticClass: "table table-responsive table-striped" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.posts.data, function (post) {
+                return _c("tr", { key: post.id }, [
+                  _c("td", [_vm._v(_vm._s(post.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(post.title))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(post.body))]),
+                ])
+              }),
+              0
+            ),
+          ]),
         ]),
       ]),
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Post Title")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Post Body")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
