@@ -5,9 +5,9 @@
                 <div class="card">
                     <form action="" @submit.prevent="submit" class="form-group">
                         <label for="title">Post Title</label>
-                        <input type="text" class="form-control" v-model="posts.title"><br>
+                        <input type="text" class="form-control post-title" v-model="form.title"><br>
                         <label for="title">Post Body</label>
-                        <input type="text" class="form-control" v-model="posts.body"><br>
+                        <input type="text" class="form-control post-body" v-model="form.body"><br>
                         <input type="submit" value="Submit">
                     </form>
                     <table class="table table-responsive table-striped">
@@ -42,16 +42,17 @@ import axios from 'axios'
     export default {
         data(){
             return{
-                posts : {
+                form : {
                   id : '',
                     title : '',
                     body : '',  
-                }
+                },
+                posts : null
             }
         },
         methods : {
             get(){
-                axios.get('http://localhost:8000/api/post',this.posts).then(res =>{
+                axios.get('http://localhost:8000/api/post',this.form).then(res =>{
                     this.posts = res.data
                     console.log('respones',res.data)
                 }).catch(err =>{
@@ -59,7 +60,7 @@ import axios from 'axios'
                 })
             },
             submit(){
-                axios.post('http://localhost:8000/api/post',this.posts).then(res =>{
+                axios.post('http://localhost:8000/api/post',this.form).then(res =>{
                     console.log('responese',res.data)
                     this.get();
                 }).catch(err =>{
@@ -78,9 +79,9 @@ import axios from 'axios'
         edit(id){
             axios.get('http://localhost:8000/api/post/'+id).
             then(res =>{
-                this.posts.title = res.data.data.title
-                this.posts.body = res.data.data.body
-                console.log(res)
+                this.form.title = res.data.title
+                this.form.body = res.data.body
+                console.log('edit',res.data.body)
             }).
             catch(err =>{
                 console.log('an error occurs',err)
