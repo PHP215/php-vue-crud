@@ -2,8 +2,7 @@
 # Order confirmation
 
 Your order has been successfully placed
-{{-- {{$details['title']}}
-{{$details['body']}} --}}
+
 @component('mail::button', ['url' => ''])
 Button Text
 @endcomponent
@@ -11,3 +10,5 @@ Button Text
 Thanks,<br>
 {{ config('app.name') }}
 @endcomponent
+{{-- {dd($details); --}}
+{{-- {{dd($details)}} --}}
