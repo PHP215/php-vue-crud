@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\welcomeMil;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 // mailing
 Route::get('/email', function () {
+    Mail::to('oladayoahmod112@gmail.com')->send(new welcomeMil());
     return new welcomeMil();
 });
