@@ -1,8 +1,7 @@
 @component('mail::message')
-# Introduction
+# Order confirmation
 
-The body of your message.
-
+Your order has been successfully placed
 @component('mail::button', ['url' => ''])
 Button Text
 @endcomponent
