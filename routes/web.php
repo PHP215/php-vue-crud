@@ -28,3 +28,10 @@ Route::get('/email', function () {
     Mail::to('oladayoahmod112@gmail.com')->send(new welcomeMil());
     return new welcomeMil();
 });
+Route::group(['middleware'=> ['ageAuth']],function(){
+    // Route::view('check{age}', 'check');
+    Route::get('check/{age}', function () {
+        Mail::to('oladayoahmod112@gmail.com')->send(new welcomeMil());
+        return 'sent';
+    });
+});
