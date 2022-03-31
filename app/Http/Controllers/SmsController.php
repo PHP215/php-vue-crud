@@ -11,8 +11,8 @@ class SmsController extends Controller
 
     public function send_sms(){
         Nexmo::message()->send([
-            'to'=>'23409056553382',
-            'from'=>'2340913576308',
+            'to'=>'2349056553382',
+            'from'=>'2349056553382',
             'text'=>'A test sms from baddas programmer'
         ]);
 
