@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\notify;
+use App\Http\Controllers\notifyController;
 use App\Mail\welcomeMil;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -43,4 +44,4 @@ Route::group(['middleware'=> ['ageAuth']],function(){
 });
 
 // notification routes
-Route::get('/notify', [notify::class,'notifier']);
+Route::get('/notify', [notifyController::class,'notifier']);

@@ -44,7 +44,7 @@ class testnotify extends Notification
     {
         return (new MailMessage)
                     ->line($this->testnotifydata['body'])
-                    ->action($this->testnotifydata['test'], $this->testnotifydata['url'])
+                    ->action($this->testnotifydata['text'], $this->testnotifydata['url'])
                     ->line($this->testnotifydata['thank_you']);
     }
 

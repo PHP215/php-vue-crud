@@ -10,7 +10,7 @@ class notify extends Controller
 {
     //
     public function notifier(){
-        $user = User::first();
+        $user = User::all();
         $details = [
             'body' => 'This is the body of the nofication',
             'text' => 'This is the text of the notification',
